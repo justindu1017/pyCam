@@ -8,14 +8,17 @@ import threading
 import time
 import pyaudio
 import wave
+import os
+from dotenv import load_dotenv
+import random
 
-threadList = []
 
-
-def OHOHOHOHO():
+def OHOHOHOHO(args):
+    load_dotenv()
+    audio_Loc = os.getenv("audio_Loc")
     chunk = 1024
     # open a wav format music
-    f = wave.open(r"./output.wav", "rb")
+    f = wave.open(audio_Loc+random.choice(os.listdir(audio_Loc)), "rb")
     # instantiate PyAudio
     p = pyaudio.PyAudio()
     # open stream
@@ -37,21 +40,25 @@ def OHOHOHOHO():
 
     # close PyAudio
     p.terminate()
-    threadList.clear()
+    args.clear()
 
 
-def main():
+def main(threadList):
     first_frame = None
-    status_list = [None, None]
-    times = []
-    df = pandas.DataFrame(columns=["Start", "End"])
+    # status_list = [None, None]
+    # times = []
+    # df = pandas.DataFrame(columns=["Start", "End"])
     video = cv2.VideoCapture(0)
-
+    video.set(cv2.CAP_PROP_BUFFERSIZE, 15)
+    vid_cod = cv2.VideoWriter_fourcc(*'mp4v')
+    output = cv2.VideoWriter("./cam_video.mp4", vid_cod, 20.0, (640, 480))
     a = 1
     while True:
+
         a = a + 1
         check, frame = video.read()
-        status = 0
+        # status = 0
+        output.write(frame)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         gray = cv2.GaussianBlur(gray, (21, 21), 0)
 
@@ -66,8 +73,7 @@ def main():
                                      cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         if cnts and len(threadList) == 0:
-            print("TS")
-            t = threading.Thread(target=OHOHOHOHO)
+            t = threading.Thread(target=OHOHOHOHO, args=(threadList, ))
             threadList.append(t)
             threadList[0].start()
 
@@ -77,7 +83,10 @@ def main():
             break
 
     video.release()
+    output.release()
+    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
-    main()
+    threadList = []
+    main(threadList=threadList)
