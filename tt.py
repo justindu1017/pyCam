@@ -66,7 +66,9 @@ from playsound import playsound
 
 
 def main5():
-    print(time.time())
+    nt = time.time()
+    time.sleep(10)
+    print(time.time()-nt)
 
 
 if __name__ == ("__main__"):

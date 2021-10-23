@@ -6,12 +6,12 @@ from dotenv import load_dotenv
 import random
 
 
-def whyne(args):
+def wayne(args):
     load_dotenv()
-    whyne_Loc = os.getenv("whyne_Loc")
+    wayne_Loc = os.getenv("wayne_Loc")
     chunk = 1024
     # open a wav format music
-    f = wave.open(whyne_Loc+random.choice(os.listdir(whyne_Loc)), "rb")
+    f = wave.open(wayne_Loc+random.choice(os.listdir(wayne_Loc)), "rb")
     # instantiate PyAudio
     p = pyaudio.PyAudio()
     # open stream
