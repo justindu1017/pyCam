@@ -2,7 +2,6 @@ import threading
 import time
 from playsound import playsound
 
-
 # def sleeper():
 #     time.sleep(2)
 #     print("fff")
@@ -40,20 +39,20 @@ from playsound import playsound
 #         t.start()
 
 
-def main4():
-    string = "96742 + 33130 ="
-    if "+" in string:
-        tmp = string.split("=")[0].replace(" ", "").split("+")
-        print(int(tmp[0])+int(tmp[1]))
-    elif "-" in string:
-        tmp = string.split("-")
-        print(int(tmp[0])-int(tmp[1]))
-    elif "*" in string:
-        tmp = string.split("*")
-        print(int(tmp[0])*int(tmp[1]))
-    elif "%" in string:
-        tmp = string.split("%")
-        print(int(tmp[0]) % int(tmp[1]))
+# def main4():
+#     string = "96742 + 33130 ="
+#     if "+" in string:
+#         tmp = string.split("=")[0].replace(" ", "").split("+")
+#         print(int(tmp[0])+int(tmp[1]))
+#     elif "-" in string:
+#         tmp = string.split("-")
+#         print(int(tmp[0])-int(tmp[1]))
+#     elif "*" in string:
+#         tmp = string.split("*")
+#         print(int(tmp[0])*int(tmp[1]))
+#     elif "%" in string:
+#         tmp = string.split("%")
+#         print(int(tmp[0]) % int(tmp[1]))
 
 
 # def main2():
@@ -64,5 +63,11 @@ def main4():
 #     t.start()
 #     t.start()
 #     t.start()
+
+
+def main5():
+    print(time.time())
+
+
 if __name__ == ("__main__"):
-    main4()
+    main5()
