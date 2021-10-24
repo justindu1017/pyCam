@@ -12,7 +12,7 @@ def main():
 
     first_frame = None
     video = cv2.VideoCapture(0)
-    video.set(cv2.CAP_PROP_BUFFERSIZE, 15)
+    video.set(cv2.CAP_PROP_BUFFERSIZE, 10)
     vid_cod = cv2.VideoWriter_fourcc(*'mp4v')
     output = cv2.VideoWriter(
         recorded_Loc+time.ctime(nowTime).replace(":", "\'").replace(" ", "\'")+".mp4", vid_cod, 20.0, (640, 480))

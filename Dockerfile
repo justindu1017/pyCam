@@ -38,5 +38,5 @@ CMD [ "python", "recordMain.py" ]
 
 
 
-
+# xhost +
 # sudo docker run --ipc=host -it --device /dev/video0 --device /dev/snd -e DISPLAY=$DISPLAY --env QT_X11_NO_MITSHM=1 -v /tmp/.X11-unix:/tmp/.X11-unix <ContainerID>
